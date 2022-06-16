@@ -3,7 +3,9 @@ from facebook_scraper import get_posts
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
-from SPARQLWrapper import SPARQLWrapper, JSON
+from rdflib import Graph
+from SPARQLWrapper import SPARQLWrapper, JSON, N3
+from pprint import pprint
 
 os.chdir(r'D:/Andres Wilches/Estudios/Ing Sistemas/Tendencias avanzadas de ingenieria de software/Corte 1/Extraccion_datos')
 
@@ -41,7 +43,6 @@ def delete_useless_columns_fb(data_set):
 
 # limitating the info deleting som useless columns from the dataframe creation
 fb_posts = delete_useless_columns_fb(get_dataFrame_from_fb())
-print(fb_posts.dtypes)
 
 # plot
 plt.plot(_fecha, _likes)
@@ -51,37 +52,46 @@ plt.title('Likes en el tiempo - Mercadolibre Col')
 plt.savefig("likes_tiempo_MeliFb.png")
 
 # saving dataset into .xlx
-fb_posts.to_excel('mercadolibrePostsInfo.xlsx',index=False)
+fb_posts.to_excel('mercadolibreFbPostsInfo.xlsx',index=False)
+print("End of Fb data extraction")
+#-------------------------------- For SparQL ------------------------------------------------------------------
+# global
+_name = []
+_info = []
+_image = []
 
-# Por SparQL ------------------------------------------------------------------
-"""
-sparql = SPARQLWrapper(
-    "http://vocabs.ardc.edu.au/repository/api/sparql/"
-    "csiro_international-chronostratigraphic-chart_geologic-time-scale-2020"
-)
-sparql.setReturnFormat(JSON)
+# methods
+def execute_sparQl_Query():
+    # we want to bring the most iconic videogame creators from SparQL
+    sparql = SPARQLWrapper("https://dbpedia.org/sparql")
+    values = ['Microsoft','Xbox_Series_X_and_Series_S','Xbox_One','Sony_Interactive_Entertainment','PlayStation_5','PlayStation_4','Nintendo','Nintendo_Switch'] 
+    # iterations to bring the info
+    for value in values:
+        sparql.setQuery(f'''
+        SELECT ?name ?comment ?image
+        WHERE {{ dbr:{value} rdfs:label ?name.
+                dbr:{value} rdfs:comment ?comment.
+                dbr:{value} dbo:thumbnail ?image.
+            FILTER (lang(?name) = 'en')
+            FILTER (lang(?comment) = 'en')
+        }}''')
+        sparql.setReturnFormat(JSON)
+        qres = sparql.query().convert()
+        result = qres['results']['bindings'][0]
+        name, comment, image_url = result['name']['value'],result['comment']['value'],result['image']['value']
+        _name.append(name)
+        _info.append(comment)
+        _image.append(image_url)
+    # end of cycle
+    data_frame = {
+            'name': _name,
+            'info': _info,
+            'image': _image
+        }
+    return pd.DataFrame(data_frame)
 
-sparql.setQuery(
-    SELECT ?item ?itemLabel ?publication_date (group_concat(distinct ?platform;separator=", ") as ?platforms) (group_concat(distinct ?genre;separator=", ") as ?genres)  with {
-    SELECT ?item WHERE 
-        {
-        ?item wdt:P31 wd:Q7889 .
-        }limit 20} as %i
-    WHERE
-        { 
-        include %i
-        ?item wdt:P400 ?value . ?value rdfs:label ?platform . filter(lang(?platform)="en")
-        ?item wdt:P136 ?value2 . ?value2 rdfs:label ?genre . filter(lang(?genre)="en")
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "en,en". }
-    } group by ?item ?itemLabel ?publication_date
-)
+sparQL_dataFrame = execute_sparQl_Query()
 
-try:
-    ret = sparql.queryAndConvert()
-    for r in ret["results"]["bindings"]:
-        print(r)
-except Exception as e:
-    print(e)
-
-"""
-
+# saving dataset into .xlx
+sparQL_dataFrame.to_excel('ConsolasTendenciaInfoSparQl.xlsx',index=False)
+print("End of SparQl data extraction")
