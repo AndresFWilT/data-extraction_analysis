@@ -10,6 +10,7 @@ class FacebookExtraction(Extraction):
     __likes = []
     __date = []
     __curr_dir = ""
+    
     """
     Concrete strategy that implements the algorithm to extract the data
     from facebook using Fb Scrapper, following the base Strategy Extraction interface
@@ -24,6 +25,10 @@ class FacebookExtraction(Extraction):
         return "Datos extraidos"
 
     def save_data(self):
+        """
+        method that saves all the collected data
+        into images or .xlx files
+        """
         # setting current direcotory (changes on your pc)
         self.curr_dir = r'D:/Andres Wilches/Estudios/Ing Sistemas/Tendencias avanzadas de ingenieria de software/Extraccion_datos'
         os.chdir(self.curr_dir)
@@ -94,6 +99,7 @@ class FacebookExtraction(Extraction):
     def curr_dir(self):
         return self.__curr_dir
 
+    # setter of current directory
     @curr_dir.setter
     def curr_dir(self,curr_dir):
         self.__curr_dir = curr_dir
