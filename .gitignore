@@ -2,3 +2,6 @@ venv/
 *.png
 *.xlsx
 *.zip
+temporal.py
+logic/strategy/__pycache__/
+__pycache__/
