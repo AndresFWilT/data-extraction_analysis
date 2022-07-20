@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+{% block title %}
+  {{super()}} 
+  VideoGame data from DBpedia
+  {% endblock title %} 
+{% block content %} 
+  {{super()}}
+        <h1 class="text-center text-uppercase">Datos extraidos de DBpedia (Consolas mas vendidas)</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark text-center">
+                <tr class ="text-center text-uppercase">
+                    <th class ="text-center"> Nombre </th>
+                    <th class ="text-center"> Indo </th>
+                    <th class ="text-center"> Url imagen </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if sparql_data %}
+                    {% for j in range(sparql_data['name']| length) %}
+                    <tr>
+                        {% for key in sparql_data %}
+                            {% if key == 'image' %}
+                                {% if sparql_data[key][j] is not none %}
+                                    <td><a href="{{ sparql_data[key][j] }}">link</a></td>
+                                {% else %}
+                                    <td><p> - </p></td>
+                                {% endif %} 
+                            {% else %}
+                                <td>{{ sparql_data[key][j] }}</td>    
+                            {% endif %}                                                                     
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h3>No se encontraron datos</h3>
+                {% endif %}
+            </tbody>
+        </table>
+  
+{% endblock content %}

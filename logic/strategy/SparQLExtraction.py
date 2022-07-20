@@ -66,6 +66,18 @@ class SparQLExtraction(Extraction):
             }
         return pd.DataFrame(data_frame)
 
+    def get_data(self):
+        """
+        method that gets the collected data
+        """
+        data = pd.read_excel('static/data/ConsolasTendenciaInfoSparQl.xlsx', sheet_name=None)
+        data = {
+            "name": data['Sheet1']['name'].tolist(),
+            "information": data['Sheet1']['info'].tolist(),
+            "image": data['Sheet1']['image'].tolist()
+        }
+        return data
+
     # getter of sparql
     @property
     def sparQL(self):

@@ -59,6 +59,14 @@ def view_fb_data():
     facebook_data = data.get_extraction()
     return render_template('viewFacebookData.html', facebook_data = facebook_data)
 
+
+## Endpoint to view SparQLData 
+@app.route('/viewSparQLData')
+def view_sparql_data():
+    data = Data(SparQLExtraction())
+    sparql_data = data.get_extraction()
+    return render_template('viewSparQLData.html', sparql_data = sparql_data)
+
 ## App init
 if __name__ == '__main__':
     app.config.from_object(DevelopmentConfig)
