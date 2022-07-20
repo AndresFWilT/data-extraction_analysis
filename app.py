@@ -59,13 +59,19 @@ def view_fb_data():
     facebook_data = data.get_extraction()
     return render_template('viewFacebookData.html', facebook_data = facebook_data)
 
-
 ## Endpoint to view SparQLData 
 @app.route('/viewSparQLData')
 def view_sparql_data():
     data = Data(SparQLExtraction())
     sparql_data = data.get_extraction()
     return render_template('viewSparQLData.html', sparql_data = sparql_data)
+
+## Endpoint to view TwitterData 
+@app.route('/viewTwitterData')
+def view_twitter_data():
+    data = Data(TwitterExtraction())
+    twitter_data = data.get_extraction()
+    return render_template('viewTwitterData.html', twitter_data = twitter_data)
 
 ## App init
 if __name__ == '__main__':

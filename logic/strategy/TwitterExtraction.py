@@ -79,6 +79,22 @@ class TwitterExtraction(Extraction):
         self.retweets = data_set['retweets_count']
         return new_data_frame
 
+    def get_data(self):
+        """
+        method that gets the collected data
+        """
+        data = pd.read_excel('static/data/mercadolibreTwitterInfo.xlsx', sheet_name=None)
+        data = {
+            "id": data['Sheet1']['post_id'].tolist(),
+            "tweet": data['Sheet1']['text'].tolist(),
+            "date": data['Sheet1']['date'].tolist(),
+            "time": data['Sheet1']['time'].tolist(),
+            "replies": data['Sheet1']['replies'].tolist(),
+            "retweets": data['Sheet1']['retweets'].tolist(),
+            "likes": data['Sheet1']['likes'].tolist()
+        }
+        return data
+
     # getter of data
     @property
     def data(self):

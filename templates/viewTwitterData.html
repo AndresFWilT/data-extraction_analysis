@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block title %}
+  {{super()}} 
+  VideoGame data from DBpedia
+  {% endblock title %} 
+{% block content %} 
+  {{super()}}
+        <h1 class="text-center text-uppercase">Datos extraidos de DBpedia (Consolas mas vendidas)</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark text-center">
+                <tr class ="text-center text-uppercase">
+                    <th class ="text-center"> Post id </th>
+                    <th class ="text-center"> Tweet </th>
+                    <th class ="text-center"> Fecha </th>
+                    <th class ="text-center"> Hora </th>
+                    <th class ="text-center"> Replicas </th>
+                    <th class ="text-center"> Retweets </th>
+                    <th class ="text-center"> Likes </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if twitter_data %}
+                    {% for j in range(twitter_data['id']| length) %}
+                    <tr>
+                        {% for key in twitter_data %}
+                            <td>{{ twitter_data[key][j] }}</td>                                                                      
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h3>No se encontraron datos</h3>
+                {% endif %}
+            </tbody>
+        </table>
+  
+{% endblock content %}
