@@ -23,26 +23,34 @@ def init():
 def index():
     return render_template('index.html')
 
+## Endpoint for module data
+@app.route('/data')
+def data():
+    return render_template('dataIndex.html')
+
 ## Endpoint for Facebook extraction
 @app.route('/facebookData')
 def get_data_FaceBook():
     data = Data(FacebookExtraction())
     data.execute_extraction()
-    return render_template('index.html')
+    message = "Datos de Facebook extraidos y guardados con exito"
+    return render_template('dataIndex.html', message=message)
 
 ## Endpoint for SparQl extraction
 @app.route('/sparQLData')
 def get_data_SparQL():
     data = Data(SparQLExtraction())
     data.execute_extraction()
-    return render_template('index.html')
+    message = "Datos de SparQL extraidos y guardados con exito"
+    return render_template('dataIndex.html', message = message)
 
 ## Endpoint for Twitter extraction
 @app.route('/twitterData')
 def get_data_Twitter():
     data = Data(TwitterExtraction())
     data.execute_extraction()
-    return render_template('index.html')
+    message = "Datos de Twitter extraidos y guardados con exito"
+    return render_template('dataIndex.html', message = message)
 
 ## App init
 if __name__ == '__main__':

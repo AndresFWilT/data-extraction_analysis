@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block title %} Modulo meli | {% endblock title %}</title>
+    <title>{% block title %} Meli | {% endblock title %}</title>
 {% endblock head %}
 {% block body %}
+    <div class="loader"></div>
     {% block navbar %}
         {% include 'navbar.html' %}
     {% endblock navbar %}
@@ -20,4 +22,9 @@
     {% block footer %}
         {% include 'footer.html' %}
     {% endblock footer %}
+    <script type="text/javascript">
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
 {% endblock body %}

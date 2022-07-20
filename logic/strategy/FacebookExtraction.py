@@ -2,6 +2,8 @@ from logic.strategy.Extraction import Extraction
 from facebook_scraper import get_posts
 import pandas as pd
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 class FacebookExtraction(Extraction):

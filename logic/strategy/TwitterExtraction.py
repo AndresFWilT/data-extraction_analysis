@@ -2,6 +2,8 @@ from logic.strategy.Extraction import Extraction
 import twint
 import pandas as pd
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 class TwitterExtraction(Extraction):
