@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+Dashboard
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<h1 class="text-center text-uppercase">Dashboard Mercadolibre</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    This chart shows how symbols and shapes can be used in charts.
+                    Highcharts includes several common symbol shapes, such as squares,
+                    circles and triangles, but it is also possible to add your own
+                    custom symbols. In this chart, custom weather symbols are used on
+                    data points to highlight that certain temperatures are warm while
+                    others are cold.
+                </p>
+            </figure>
+        </div>
+        <div class="col">
+            <figure class="highcharts-figure">
+                <div id="container2"></div>
+                <p class="highcharts-description">
+                    Chart showing browser market shares. Clicking on individual columns
+                    brings up more detailed data. This chart makes use of the drilldown
+                    feature in Highcharts to easily switch between datasets.
+                </p>
+            </figure>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+            <figure class="highcharts-figure">
+                <div id="container3"></div>
+                <p class="highcharts-description">
+                    Pie chart showing a circle. This is a compact visualization,
+                    often used in dashboards.
+                </p>
+            </figure>
+        </div>
+        <div class="col">
+            <figure class="highcharts-figure">
+                <div id="container4"></div>
+                <p class="highcharts-description">
+                    Pie chart showing a hollow semi-circle. This is a compact visualization,
+                    often used in dashboards.
+                </p>
+            </figure>
+        </div>
+    </div>
+</div>
+<script src="static/js/Spline.js"></script>
+<script src="static/js/barLine.js"></script>
+<script src="static/js/pie.js"></script>
+<script src="static/js/semicircle.js"></script>
+<script src="static/js/variousGraph.js"></script>
+{% endblock content %}

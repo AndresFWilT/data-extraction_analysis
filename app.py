@@ -73,6 +73,11 @@ def view_twitter_data():
     twitter_data = data.get_extraction()
     return render_template('viewTwitterData.html', twitter_data = twitter_data)
 
+## Endpoint to go to dashBoard
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 ## App init
 if __name__ == '__main__':
     app.config.from_object(DevelopmentConfig)
