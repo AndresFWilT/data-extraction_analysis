@@ -1,0 +1,16 @@
+nav.mainNavbar{
+    background: #fff159;
+}
+
+a.main{
+    background:#2d3277;
+    color: #fff159;
+}
+
+p.navText{
+    color: #2d3277;
+}
+
+a.mainToogle{
+    color: #2d3277;
+}
