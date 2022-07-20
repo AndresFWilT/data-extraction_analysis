@@ -22,7 +22,8 @@ class SparQLExtraction(Extraction):
         method that first, collects the data, use
         pandas dataset to save all later
         """
-        self.values.extend(['Microsoft','Xbox_Series_X_and_Series_S','Xbox_One','Sony_Interactive_Entertainment','PlayStation_5','PlayStation_4','Nintendo','Nintendo_Switch'])
+        print("SPARQL from DBpedia")
+        self.values.extend(['Xbox_Series_X_and_Series_S','Xbox_One','Xbox_360','PlayStation_5','PlayStation_4','PlayStation_3','PlayStation_2','Nintendo_Switch'])
         self.sparQL_data_frame = self.__execute_sparQL_query()
         return "data extracted"
     

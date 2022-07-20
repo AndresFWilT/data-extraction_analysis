@@ -9,6 +9,7 @@ import json
 from logic.context.Data import Data
 from logic.strategy.FacebookExtraction import FacebookExtraction
 from logic.strategy.SparQLExtraction import SparQLExtraction
+from logic.strategy.TwitterExtraction import TwitterExtraction
 
 app = Flask(__name__)
 
@@ -33,6 +34,13 @@ def get_data_FaceBook():
 @app.route('/sparQLData')
 def get_data_SparQL():
     data = Data(SparQLExtraction())
+    data.execute_extraction()
+    return render_template('index.html')
+
+## Endpoint for Twitter extraction
+@app.route('/twitterData')
+def get_data_Twitter():
+    data = Data(TwitterExtraction())
     data.execute_extraction()
     return render_template('index.html')
 
