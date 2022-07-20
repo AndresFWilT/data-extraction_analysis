@@ -1,3 +1,4 @@
+from ctypes import sizeof
 from logic.strategy.Extraction import Extraction
 from facebook_scraper import get_posts
 import pandas as pd
@@ -5,6 +6,7 @@ import os
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import numpy as np
 
 class FacebookExtraction(Extraction):
     ## Global
@@ -65,6 +67,21 @@ class FacebookExtraction(Extraction):
         }
         new_data_frame = pd.DataFrame(new_data_frame)
         return new_data_frame
+
+    def get_data(self):
+        """
+        method that gets the collected data
+        """
+        data = pd.read_excel('static/data/mercadolibreFbPostsInfo.xlsx', sheet_name=None)
+        data = {
+            "id": data['Sheet1']['post_id'].tolist(),
+            "text": data['Sheet1']['text'].tolist(),
+            "time": data['Sheet1']['time'].tolist(),
+            "image": data['Sheet1']['image'].tolist(),
+            "likes": data['Sheet1']['likes'].tolist(),
+            "live": data['Sheet1']['was_live'].tolist()
+        }
+        return data
 
     # getter of data
     @property

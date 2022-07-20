@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% block title %}
+  {{super()}} 
+  Facebook data
+  {% endblock title %} 
+{% block content %} 
+  {{super()}}
+        <h1 class="text-center text-uppercase">Datos extraidos de Facebook</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark text-center">
+                <tr class ="text-center text-uppercase">
+                    <th class ="text-center"> Post id </th>
+                    <th class ="text-center"> texto </th>
+                    <th class ="text-center"> Fecha </th>
+                    <th class ="text-center"> Url imagen </th>
+                    <th class ="text-center"> Likes </th>
+                    <th class ="text-center"> Fue en vivo </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if facebook_data %}
+                    {% for j in range(facebook_data['id']| length) %}
+                    <tr>
+                        {% for key in facebook_data %}
+                            {% if key == 'image' %}
+                                {% if facebook_data[key][j] is not none %}
+                                    <td><a href="{{ facebook_data[key][j] }}">link</a></td>
+                                {% else %}
+                                    <td><p> - </p></td>
+                                {% endif %} 
+                            {% else %}
+                                <td>{{ facebook_data[key][j] }}</td>    
+                            {% endif %}                                                                     
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h3>No se encontraron datos</h3>
+                {% endif %}
+            </tbody>
+        </table>
+  
+{% endblock content %}

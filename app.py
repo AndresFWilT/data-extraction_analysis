@@ -52,6 +52,13 @@ def get_data_Twitter():
     message = "Datos de Twitter extraidos y guardados con exito"
     return render_template('dataIndex.html', message = message)
 
+## Endpoint to view FacebookData 
+@app.route('/viewFacebookData')
+def view_fb_data():
+    data = Data(FacebookExtraction())
+    facebook_data = data.get_extraction()
+    return render_template('viewFacebookData.html', facebook_data = facebook_data)
+
 ## App init
 if __name__ == '__main__':
     app.config.from_object(DevelopmentConfig)

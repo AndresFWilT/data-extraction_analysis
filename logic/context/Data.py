@@ -38,3 +38,11 @@ class Data():
         self._extraction.do_extraction()
         print("Saving data..")
         self._extraction.save_data()
+    
+    def get_extraction(self) -> None:
+        """
+        The context delegates some work to the Strategy (Extraction) object instead
+        of implementing multiple versions of the algorithm on its own
+        """
+        print("Getting data extracted")
+        return self._extraction.get_data()

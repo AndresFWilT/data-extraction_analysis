@@ -16,3 +16,7 @@ class Extraction(ABC):
     @abstractmethod
     def save_data(self):
         pass
+
+    @abstractmethod
+    def get_data(self):
+        pass
