@@ -109,7 +109,14 @@ Dashboard
                                         <div class="container card-body">
                                             <h3><i class="bi bi-twitter text-info"></i> Twitter</h3>
                                             <div class="row">
-                                                <div class="col alert alert-info"><b>Nivel de difusion:</b> <i>{{important_data[16]}}</i></div>
+                                                <div class="col alert alert-info">
+                                                    <b>Nivel de difusion:</b> <i>{{important_data[16]}}%</i>
+                                                    </br></br></br></br></br>
+                                                    <span class="text-muted">El nivel de difusion se calculo teniendo en cuenta
+                                                        la cantidad de replies que tienen las publicaci&oacute;nes de mercadolibre en 
+                                                        Twitter.
+                                                    </span>
+                                                </div>
                                                 <div class="col alert alert-info">
                                                     <p><b>Publicacion con likes mas altos registrados:</b> <i>{{important_data[4]}}</i></p>
                                                     <p><b>Cantidad:</b> </i>{{important_data[5]}}<i></p>
@@ -150,7 +157,7 @@ Dashboard
             type: 'spline'
         },
         title: {
-            text: 'Iteraciones tweets'
+            text: 'Interacciones'
         },
         subtitle: {
             text: 'Fuente datos: https://twitter.com/mercadolibre'
@@ -163,7 +170,7 @@ Dashboard
         },
         yAxis: {
             title: {
-                text: 'Iteraciones'
+                text: 'Interacciones'
             },
             labels: {
                 formatter: function () {
