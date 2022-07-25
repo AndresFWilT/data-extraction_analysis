@@ -94,7 +94,7 @@ def dashboard():
     social_media = __calculate_pie(tw_numbers, likes_fb)
     # important data
     important_data = __get_important_data(facebook_data,twitter_data)
-    important_data.append(round(tw_numbers[4],2))
+    important_data.append(round(tw_numbers[5],2))
     return render_template('dashboard.html', likes_fb = likes_fb, date_fb = date_fb, date_tw = date_tw, likes_tw = likes_tw, retweets = retweets, replies = replies, tw_numbers = tw_numbers, social_media = social_media, important_data = important_data)
 
 ## Method that gets the important data (max iterations, date, text.. etc)
