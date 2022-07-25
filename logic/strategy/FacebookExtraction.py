@@ -73,10 +73,17 @@ class FacebookExtraction(Extraction):
         method that gets the collected data
         """
         data = pd.read_excel('static/data/mercadolibreFbPostsInfo.xlsx', sheet_name=None)
+        first = {
+            "time": data['Sheet1']['time'].tolist()
+        }
+        time = first['time']
+        time2 = []
+        for i in range(len(time)):
+            time2.append(time[i].strftime("%m/%d/%Y, %H:%M:%S"))
         data = {
             "id": data['Sheet1']['post_id'].tolist(),
             "text": data['Sheet1']['text'].tolist(),
-            "time": data['Sheet1']['time'].tolist(),
+            "date": time2,
             "image": data['Sheet1']['image'].tolist(),
             "likes": data['Sheet1']['likes'].tolist(),
             "live": data['Sheet1']['was_live'].tolist()

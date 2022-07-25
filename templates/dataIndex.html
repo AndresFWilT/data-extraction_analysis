@@ -6,54 +6,60 @@ Modulo datos
 {% block content %}
 {{ super() }}
 {% if message %}
-    <div class="card-body btn-success">
-        <p class="text-center text-light">{{ message }}</p>
-    </div>
+<div class="card-body btn-success">
+  <p class="text-center text-light">{{ message }}</p>
+</div>
 {% endif %}
 <div class="card text-center">
-    <div class="card-header">
-        <h1 class="text-uppercase"><b>Modulo datos</b></h1>
-      <i>Funcionalidades</i>
-    </div>
-    <div class="card-body">
-      <div class="col-auto text-center">
-        <div class="row">
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                  <h4 class="text-uppercase card-header">Extracci&oacute;n de datos</h4>
-                  <p class="card-text">
-                    Extrae datos de las siguientes formas
-                  </p>
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <a class="btn btn-primary text-center text-uppercase" href="facebookData"><i class="bi bi-facebook"></i> Facebook</a>
-                    <a class="btn btn-secondary text-center text-uppercase" href="sparQLData">SparQL (DBpedia)</a>
-                    <a class="btn btn-info text-center text-uppercase" href="twitterData"><i class="bi bi-twitter"></i> Twitter</a>
-                </div>
-                <br>
-                <span class="text-muted">Twitter y Facebook traen info de los posts, mientras que SparQL trae info de las consolas de videojuegos mas vendidas.</span>
+  <div class="card-header">
+    <h1 class="text-uppercase"><b>Modulo datos</b></h1>
+    <i>Funcionalidades</i>
+  </div>
+  <div class="card-body">
+    <div class="col-auto text-center">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="text-uppercase card-header">Extracci&oacute;n de datos</h4>
+              <p class="card-text">
+                Extrae datos de las siguientes formas
+              </p>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a class="btn btn-primary text-center text-uppercase" href="facebookData"><i class="bi bi-facebook"></i>
+                  Facebook</a>
+                <a class="btn btn-secondary text-center text-uppercase" href="sparQLData">SparQL (DBpedia)</a>
+                <a class="btn btn-info text-center text-uppercase" href="twitterData"><i class="bi bi-twitter"></i>
+                  Twitter</a>
               </div>
+              <br>
+              <span class="text-muted">Twitter y Facebook traen info de los posts, mientras que SparQL trae info de las
+                consolas de videojuegos mas vendidas.</span>
             </div>
           </div>
         </div>
-        <br>
-        <div class="row text-center">
-          <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-uppercase card-header">Visualizaci&oacute;n de datos</h4>
-                    <p class="card-text">
-                      Visualiza los datos extraidos
-                    </p>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <a class="btn btn-primary text-center text-uppercase" href="viewFacebookData"><i class="bi bi-facebook"></i> Facebook</a>
-                      <a class="btn btn-secondary text-center text-uppercase" href="viewSparQLData">SparQL (DBpedia)</a>
-                      <a class="btn btn-info text-center text-uppercase" href="viewTwitterData"><i class="bi bi-twitter"></i> Twitter</a>
-                  </div>
-                  <br>
-                  <span class="text-muted">Twitter y Facebook traen info de los posts, mientras que SparQL trae info de las consolas de videojuegos mas vendidas.</span>
-                </div>
+      </div>
+      <br>
+      <div class="row text-center">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="text-uppercase card-header">Visualizaci&oacute;n de datos</h4>
+              <p class="card-text">
+                Visualiza los datos extraidos
+              </p>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a class="btn btn-primary text-center text-uppercase" href="viewFacebookData"><i
+                    class="bi bi-facebook"></i> Facebook</a>
+                <a class="btn btn-secondary text-center text-uppercase" href="viewSparQLData">SparQL (DBpedia)</a>
+                <a class="btn btn-info text-center text-uppercase" href="viewTwitterData"><i class="bi bi-twitter"></i>
+                  Twitter</a>
+              </div>
+              <br>
+              <span class="text-muted">Twitter y Facebook traen info de los posts, mientras que SparQL trae info de las
+                consolas de videojuegos mas vendidas.</span>
             </div>
           </div>
         </div>
-{% endblock content %}
+      </div>
+      {% endblock content %}

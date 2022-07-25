@@ -84,11 +84,15 @@ class TwitterExtraction(Extraction):
         method that gets the collected data
         """
         data = pd.read_excel('static/data/mercadolibreTwitterInfo.xlsx', sheet_name=None)
+        date = data['Sheet1']['date'].tolist()
+        time = data['Sheet1']['time'].tolist()
+        result = []
+        for i in range(len(date)):
+            result.append(str(date[i])+", "+str(time[i]))
         data = {
             "id": data['Sheet1']['post_id'].tolist(),
             "tweet": data['Sheet1']['text'].tolist(),
-            "date": data['Sheet1']['date'].tolist(),
-            "time": data['Sheet1']['time'].tolist(),
+            "date": result,
             "replies": data['Sheet1']['replies'].tolist(),
             "retweets": data['Sheet1']['retweets'].tolist(),
             "likes": data['Sheet1']['likes'].tolist()

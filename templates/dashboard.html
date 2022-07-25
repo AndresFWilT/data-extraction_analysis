@@ -5,56 +5,389 @@ Dashboard
 {% endblock title %}
 {% block content %}
 {{ super() }}
-<h1 class="text-center text-uppercase">Dashboard Mercadolibre</h1>
+<div class="card text-center">
+    <div class="card-header">
+        <h1 class="text-uppercase">
+            <b>Dashboard mercado libre</b>
+        </h1>
+        <i>Graficos e informaci&oacute;n de los datos extraidos de las cuentas de mercado libre</i>
+    </div>
+</div>
+</br></br>
 <div class="container">
     <div class="row">
         <div class="col">
-            <figure class="highcharts-figure">
-                <div id="container"></div>
-                <p class="highcharts-description">
-                    This chart shows how symbols and shapes can be used in charts.
-                    Highcharts includes several common symbol shapes, such as squares,
-                    circles and triangles, but it is also possible to add your own
-                    custom symbols. In this chart, custom weather symbols are used on
-                    data points to highlight that certain temperatures are warm while
-                    others are cold.
-                </p>
-            </figure>
+            <div class="card text-justify">
+                <div class="card-header text-center">
+                    <div><i class="bi bi-facebook text-primary"></i></div>
+                    <h3>Facebook</h3>
+                </div>
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description">
+                        Likes que se han recibido desde la pagina "mercadolibrecol", a lo largo del tiempo,
+                        con esto se puede comparar cuales han tenido mas repercusion o gusto entre los seguidores
+                        de la misma.
+                    </p>
+                </figure>
+            </div>
         </div>
         <div class="col">
-            <figure class="highcharts-figure">
-                <div id="container2"></div>
-                <p class="highcharts-description">
-                    Chart showing browser market shares. Clicking on individual columns
-                    brings up more detailed data. This chart makes use of the drilldown
-                    feature in Highcharts to easily switch between datasets.
-                </p>
-            </figure>
+            <div class="card text-justify">
+                <div class="card-header text-center">
+                    <div><i class="bi bi-twitter text-info"></i></div>
+                    <h3>Twitter</h3>
+                </div>
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                    <p class="highcharts-description">
+                        Likes, retweets y replicas que se han realizado en la cuenta de twitter de mercadolibre a lo
+                        largo del tiempo,
+                        con esto se puede comparar cuales han sido las mas llamativas entre los usuarios.
+                    </p>
+                </figure>
+            </div>
         </div>
         <div class="w-100"></div>
         <div class="col">
-            <figure class="highcharts-figure">
-                <div id="container3"></div>
-                <p class="highcharts-description">
-                    Pie chart showing a circle. This is a compact visualization,
-                    often used in dashboards.
-                </p>
-            </figure>
+            <div class="card text-justify">
+                <div class="card-header text-center">
+                    <div><i class="bi bi-facebook text-primary"></i> / <i class="bi bi-twitter text-info"></i></div>
+                    <h3>Facebook vs Twitter</h3>
+                </div>
+                <figure class="highcharts-figure">
+                    <div id="container3"></div>
+                    <p class="highcharts-description">
+                        Comparaci&oacute;n entre los datos obtenidos de la extracci&oacute;n de datos, mediante un
+                        grafico de torta, se puede ver como existe mayor interacci&oacute;n entre las dos redes
+                        sociales.
+                    </p>
+                </figure>
+            </div>
         </div>
         <div class="col">
-            <figure class="highcharts-figure">
-                <div id="container4"></div>
-                <p class="highcharts-description">
-                    Pie chart showing a hollow semi-circle. This is a compact visualization,
-                    often used in dashboards.
-                </p>
-            </figure>
+            <div class="card text-justify">
+                <div class="card-header text-center">
+                    <div><i class="bi bi-twitter text-info"></i></div>
+                    <h3>Twitter</h3>
+                </div>
+                <figure class="highcharts-figure">
+                    <div id="container4"></div>
+                    <p class="highcharts-description">
+                        Grafico de semicirculo donde se puede apreciar la cantidad de likes, retweets y replicas
+                        realizadas
+                        en la cuenta de twitter entre los usuarios.
+                    </p>
+                </figure>
+            </div>
         </div>
     </div>
 </div>
-<script src="static/js/Spline.js"></script>
-<script src="static/js/barLine.js"></script>
-<script src="static/js/pie.js"></script>
-<script src="static/js/semicircle.js"></script>
-<script src="static/js/variousGraph.js"></script>
+<div class="card-body">
+    <div class="col-auto text-center">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-uppercase card-header">Datos importantes</h4>
+                        </br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="container card-body">
+                                        <h3><i class="bi bi-facebook text-primary"></i> Facebook</h3>
+                                        <div class="row">
+                                            <div class="col alert alert-primary">
+                                                <p><b>Publicacion con likes mas altos registrados:</b> <i>{{important_data[0]}}</i> </p>
+                                                <p><b>Cantidad:</b> <i>{{important_data[1]}}</i></p>
+                                                <p><b>Texto:</b> <i>{{important_data[2]}}</i></p>
+                                                <span class="text-muted"><b>Fecha:</b> <i>{{important_data[3]}}</i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="container card-body">
+                                            <h3><i class="bi bi-twitter text-info"></i> Twitter</h3>
+                                            <div class="row">
+                                                <div class="col alert alert-info"><b>Nivel de difusion:</b> <i>{{important_data[16]}}</i></div>
+                                                <div class="col alert alert-info">
+                                                    <p><b>Publicacion con likes mas altos registrados:</b> <i>{{important_data[4]}}</i></p>
+                                                    <p><b>Cantidad:</b> </i>{{important_data[5]}}<i></p>
+                                                    <p><b>Texto:</b> <i>{{important_data[6]}}</i></p>
+                                                    <span class="text-muted"><b>Fecha:</b> <i>{{important_data[7]}}</i></span>
+                                                </div>
+                                                <div class="col alert alert-info">
+                                                    <p><b>Publicacion con retweets mas altos registrados:</b> <i>{{important_data[8]}}</i></p>
+                                                    <p><b>Cantidad:</b> </i>{{important_data[9]}}<i></p>
+                                                    <p><b>Texto:</b> <i>{{important_data[10]}}</i></p>
+                                                    <span class="text-muted"><b>Fecha:</b> <i>{{important_data[11]}}</i></span>
+                                                </div>
+                                                <div class="col alert alert-info">
+                                                    <p><b>Publicacion con replies mas altos registrados:</b> <i>{{important_data[12]}}</i></p>
+                                                    <p><b>Cantidad:</b> </i>{{important_data[13]}}<i></p>
+                                                    <p><b>Texto:</b> <i>{{important_data[14]}}</i></p>
+                                                    <span class="text-muted"><b>Fecha:</b> <i>{{important_data[15]}}</i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var time_tw_json = {{ date_tw | tojson }};
+    var likes_tw_json = {{ likes_tw| tojson}};
+    var retweets = {{ retweets| tojson}};
+    var replies = {{ replies| tojson}};
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: 'Iteraciones tweets'
+        },
+        subtitle: {
+            text: 'Fuente datos: https://twitter.com/mercadolibre'
+        },
+        xAxis: {
+            categories: time_tw_json,
+            accessibility: {
+                description: 'Fecha publicacion'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Iteraciones'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value;
+                }
+            }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 5,
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'likes',
+            marker: {
+                symbol: 'circle'
+            },
+            data: likes_tw_json
+        }, {
+            name: 'retweets',
+            marker: {
+                symbol: 'diamond'
+            },
+            data: retweets
+        }, {
+            name: 'replies',
+            marker: {
+                symbol: 'square'
+            },
+            data: replies
+        }]
+    });
+</script>
+<script>
+    var time_fb_json = {{ date_fb | tojson }};
+    var likes_fb_json = {{ likes_fb| tojson}};
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            align: 'center',
+            text: 'Likes publicaciones facebook'
+        },
+        subtitle: {
+            align: 'center',
+            text: 'Fuente datos: https://www.facebook.com/mercadolibrecol'
+        },
+        accessibility: {
+            announceNewData: {
+                enabled: true
+            }
+        },
+        xAxis: {
+            type: 'category',
+            categories: time_fb_json
+        },
+        yAxis: {
+            title: {
+                text: 'Likes'
+            }
+
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}'
+                }
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> likes<br/>'
+        },
+        series: [
+            {
+                name: "Likes por fecha/publicacion",
+                colorByPoint: true,
+                data: likes_fb_json
+            }
+        ]
+    });
+</script>
+<script>
+    var twitter_data = {{ tw_numbers | tojson }};
+    var social_media = {{ social_media| tojson}};
+    // Create the chart
+    Highcharts.chart('container3', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Analisis iteraciones entre Facebook y Twitter'
+        },
+        subtitle: {
+            text: 'clickea sobre el grafico para mas info. Fuente datos: https://www.facebook.com/mercadolibrecol, https://twitter.com/mercadolibre'
+        },
+
+        accessibility: {
+            announceNewData: {
+                enabled: true
+            },
+            point: {
+                valueSuffix: '%'
+            }
+        },
+
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}: {point.y:.1f}%'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
+
+        series: [
+            {
+                name: "Iteracion",
+                colorByPoint: true,
+                data: [
+                    {
+                        name: "Facebook: " + social_media[0],
+                        y: social_media[2],
+                        color: '#3b5998'
+                    },
+                    {
+                        name: "Twitter: " + social_media[1],
+                        y: social_media[3],
+                        color: '#00acee',
+                        drilldown: "Twitter"
+                    }
+                ]
+            }
+        ],
+        drilldown: {
+            series: [
+                {
+                    name: "Twitter",
+                    id: "Twitter",
+                    data: [
+                        [
+                            "Likes (" + twitter_data[0] + ") ",
+                            twitter_data[3]
+                        ],
+                        [
+                            "Retweets (" + twitter_data[1] + ") ",
+                            twitter_data[4]
+                        ],
+                        [
+                            "Replies (" + twitter_data[2] + ") ",
+                            twitter_data[5]
+                        ]
+                    ]
+                }
+            ]
+        }
+    });
+</script>
+<script>
+    var data = {{ tw_numbers | tojson }};
+    Highcharts.chart('container4', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Total iteraciones',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 60
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%'],
+                size: '110%'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Total',
+            innerSize: '50%',
+            data: [
+                ['Likes: ' + data[0], data[3]],
+                ['Retweets: ' + data[1], data[4]],
+                ['Replies: ' + data[2], data[5]]
+            ]
+        }]
+    });
+</script>
 {% endblock content %}
